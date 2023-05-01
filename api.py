@@ -3,7 +3,7 @@ from VendaModel import *
 
 app = Flask(__name__)
 
-vendaModel = Vendas()
+vendaModel = VendaModel()
 
 
 @app.route('/vendas', methods=['GET'])
