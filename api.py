@@ -11,10 +11,18 @@ def get_vendas():
     vendas = vendaModel.get_all()
     return jsonify(vendas)
 
+
 @app.route('/vendas/<int:id>', methods=['GET'])
 def get_venda_by_id(id):
     venda = vendaModel.get_by_id(id)
     return jsonify(venda)
+
+
+@app.route('/vendas', methods=['POST'])
+def create_venda():
+    venda = request.get_json()
+
+    return vendaModel.create(venda)
 
 
 app.run(port=5000, host='localhost', debug=True)
