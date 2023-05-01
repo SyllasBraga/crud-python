@@ -21,9 +21,24 @@ class VendaModel(BaseModel):
         return self.to_dict(venda)
 
     def create(self, venda):
-
         venda_obj = self.to_venda(venda)
         venda_obj.save()
+
+        return self.get_all()
+
+    def update_venda(self, id, venda):
+        venda_atual = self.get(id)
+        venda_atual.nome_produto = venda['nome_produto']
+        venda_atual.valor = venda['valor']
+
+        venda_atual.save()
+
+        return self.get_all()
+
+    def delete_venda(self, id):
+        venda = self.get(id)
+
+        venda.delete_instance()
 
         return self.get_all()
 
@@ -35,9 +50,9 @@ class VendaModel(BaseModel):
         }
 
     def to_venda(self, venda):
-
-        venda_cvt = VendaModel(nome_produto=venda['nome_produto'],
-                          valor=venda['valor'])
+        venda_cvt = VendaModel(id_venda=venda['id_venda'],
+                               nome_produto=venda['nome_produto'],
+                               valor=venda['valor'])
 
         return venda_cvt
 

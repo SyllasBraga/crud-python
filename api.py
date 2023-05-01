@@ -25,4 +25,16 @@ def create_venda():
     return vendaModel.create(venda)
 
 
+@app.route('/vendas/<int:id>', methods=['PUT'])
+def update_venda(id):
+    venda = request.get_json()
+
+    return vendaModel.update_venda(id, venda)
+
+
+@app.route('/vendas/<int:id>', methods=['DELETE'])
+def delete_venda(id):
+    return vendaModel.delete_venda(id)
+
+
 app.run(port=5000, host='localhost', debug=True)
