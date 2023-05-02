@@ -37,6 +37,7 @@ def update_venda(id):
 def delete_venda(id):
     return vendaModel.delete_venda(id)
 
+
 @app.route('/clientes', methods=['GET'])
 def get_all_clientes():
     return jsonify(clienteModel.get_all())

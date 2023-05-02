@@ -18,4 +18,5 @@ login varchar(255) unique not null
 alter table vendas
 add foreign key fk_cliente_venda(cliente_id) references cliente(id_cliente);
 
-insert into cliente values (default, "José", "josé@gmail.com")
+insert into cliente values (default, "José", "josé@gmail.com");
+insert into vendas values (default, "Sabão", 10.62, 1);

@@ -1,11 +1,15 @@
+from collections import OrderedDict
+
 from DataBaseConfiguration import BaseModel
 from peewee import *
+from ClienteModel import *
 
 
 class VendaModel(BaseModel):
     id_venda = PrimaryKeyField()
     nome_produto = TextField()
     valor = FloatField()
+    cliente = ForeignKeyField(ClienteModel, backref='vendas')
 
     def get_all(self):
         vendas = []
@@ -46,7 +50,8 @@ class VendaModel(BaseModel):
         return {
             'id_venda': row.id_venda,
             'nome_produto': row.nome_produto,
-            'valor': row.valor
+            'valor': row.valor,
+            'cliente': ClienteModel.to_dict(self, row.cliente)
         }
 
     def to_venda(self, venda):

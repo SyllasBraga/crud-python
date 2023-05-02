@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 from DataBaseConfiguration import BaseModel
 from peewee import *
 
